@@ -2,11 +2,10 @@
 
 <h1>Appointments</h1>
 
-<%= search_form_for @q do |f| %>
+<%#= search_form_for @q do |f| %>
 
-  # Search if the name field contains...
-  <%= f.label :start_from_cont %>
-  <%= f.datetime_local_field :start_from_cont %>
+  <%#= f.label :start_from_cont %>
+  <%#= f.datetime_local_field :start_from_cont %>
 
   <%# # Search if an associated articles.title starts with... %>
   <%#= f.label :articles_title_start %>
@@ -16,8 +15,8 @@
   <%#= f.label :name_or_description_or_email_or_articles_title_cont %>
   <%#= f.search_field :name_or_description_or_email_or_articles_title_cont %>
 
-  <%= f.submit %>
-<% end %>
+  <%#= f.submit %>
+<%# end %>
 
 <table>
   <thead>
@@ -32,9 +31,9 @@
   <tbody>
     <% @appointments.each do |appointment| %>
       <tr>
-        <td><%= appointment.start_from %></td>
-        <td><%= appointment.end_at %></td>
-        <td><%= appointment.doctor_id %></td>
+        <td><%= appointment.start_from.strftime("%d-%b-%y %H:%M") %></td>
+        <td><%= appointment.end_at.strftime("%d-%b-%y %H:%M") %></td>
+        <td><%= appointment.doctor.name %></td>
         <td><%= link_to 'Show', appointment %></td>
         <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
         <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
